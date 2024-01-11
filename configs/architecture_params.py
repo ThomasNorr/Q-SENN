@@ -1,0 +1,1 @@
+architecture_params = {"resnet50": {"beta":0.196}}
