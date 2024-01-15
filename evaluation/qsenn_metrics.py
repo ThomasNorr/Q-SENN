@@ -7,19 +7,15 @@ from evaluation.diversity import MultiKCrossChannelMaxPooledSum
 from evaluation.utils import get_metrics_for_model
 
 
-def evaluateALLMetricsForComps(features_train, feature_maps_train, outputs_train, features_test, feature_maps_test,
-                               outputs_test, linear_matrix, bias, labels_train):
-    # Calculate Diversity, Dependency, GMM Overlap and similarity with CUB GT for given features
-
+def evaluateALLMetricsForComps(features_train,  outputs_train,  feature_maps_test,
+                               outputs_test, linear_matrix,  labels_train):
     with torch.no_grad():
-        if len(features_train) < 7000:
+        if len(features_train) < 7000: # recognize CUB and TravelingBirds
             cub_alignment = get_cub_alignment_from_features(features_train)
         else:
             cub_alignment = 0
         print("cub_alignment: ", cub_alignment)
         localizer = MultiKCrossChannelMaxPooledSum(range(1, 6), linear_matrix, None)
-        # sum_localizer = MultiKCrossChannelMaxPooledSum(range(1, 6), linear_matrix, None, func="sum_norm")
-
         batch_size = 300
         for i in range(np.floor(len(features_train) / batch_size).astype(int)):
             localizer(outputs_test[i * batch_size:(i + 1) * batch_size].to("cuda"),
@@ -27,10 +23,8 @@ def evaluateALLMetricsForComps(features_train, feature_maps_train, outputs_train
 
         locality, exlusive_locality = localizer.get_result()
         diversity = locality[4]
-        #   diversity_sum = sum_localizer.get_result()[0][4]
         print("diversity@5: ", diversity)
         abs_frac_mean = compute_contribution_top_feature(
-            # , feature_act_specific_mean, feature_act_specific_max
             features_train,
             outputs_train,
             linear_matrix,
@@ -40,8 +34,6 @@ def evaluateALLMetricsForComps(features_train, feature_maps_train, outputs_train
     return answer_dict
 
 def eval_model_on_all_qsenn_metrics(model, test_loader, train_loader):
-    # TODO evaluate model on all metrics
-    # TODO return metrics
     return get_metrics_for_model(train_loader, test_loader, model, evaluateALLMetricsForComps)
 
 

@@ -141,7 +141,7 @@ class ResNet(nn.Module, FinalLayer):
 
     def __init__(self, block, layers, num_classes=1000, zero_init_residual=False,
                  groups=1, width_per_group=64, replace_stride_with_dilation=None,
-                 norm_layer=None, changed_strides=False, drop_rate=None):
+                 norm_layer=None, changed_strides=False,):
         super(ResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
@@ -177,9 +177,6 @@ class ResNet(nn.Module, FinalLayer):
             self.stride = 1
         self.layer4 = self._make_layer(block, 512, layers[3], stride=self.stride,
                                        dilate=replace_stride_with_dilation[2])
-
-        # self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-       # self.init_experiment_stuff(num_classes,  512 * block.expansion)
         FinalLayer.__init__(self, num_classes, 512 * block.expansion)
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -197,33 +194,6 @@ class ResNet(nn.Module, FinalLayer):
                     nn.init.constant_(m.bn3.weight, 0)
                 elif isinstance(m, BasicBlock):
                     nn.init.constant_(m.bn2.weight, 0)
-
-    # def get_max_out_head(self):
-    #     return self.layer4
-
-    # def get_orthogonal_matrix(self):
-    #     relevant_layer = self.layer4[-1]
-    #     if isinstance(relevant_layer, Bottleneck):
-    #         relevant_layer = relevant_layer.conv3.weight[:, :, 0, 0]
-    #     elif isinstance(relevant_layer, BasicBlock):
-    #         relevant_layer = None
-    #     return relevant_layer
-
-    # def get_feature_map_dim(self, size):
-    #     if size == 448:
-    #         answer = 56
-    #     else:
-    #         answer = 28
-    #     return int(answer / self.stride / self.sstride)
-
-    # def get_output_feature_layer(self):
-    #     relevant_layer = self.layer4[-1]
-    #     if isinstance(relevant_layer, Bottleneck):
-    #
-    #         return [(self.layer4[-1], "conv3", "layer4.2", {"kernel_size": 1, "stride": "Check", "bias": False}),
-    #                 (self.layer4[-1], "bn3", "layer4.2", {})]
-    #     else:
-    #         return [False, 512]
 
     def _make_layer(self, block, planes, blocks, stride=1, dilate=False, last_block_f=None):
         norm_layer = self._norm_layer
@@ -251,50 +221,6 @@ class ResNet(nn.Module, FinalLayer):
                                 norm_layer=norm_layer, features=krepeep))
 
         return SequentialWithArgs(*layers)
-        # return nn.Sequential(*layers)
-
-    # def get_penultimate_map(self, image):
-    #     x = self.normalizer(image)
-    #     x = self.conv1(x)
-    #     x = self.bn1(x)
-    #     x = self.relu(x)
-    #     x = self.maxpool(x)
-    #
-    #     x = self.layer1(x)
-    #     x = self.layer2(x)
-    #     x = self.layer3(x)
-    #     feature_maps = self.layer4(x, fake_relu=False, no_relu=False)
-    #     #feature_maps = self.actfunc(feature_maps)
-    #     # feature_maps = self.layer4[:-1](x, fake_relu=False, no_relu=True)
-    #     # last_layer = self.layer4[-1]
-    #     # feature_maps = last_layer[:-1](feature_maps)
-    #     return feature_maps
-
-    # def convert_to_feature_val(self, feature_maps):
-    #     # return self.layer4[-1](feature_maps, fake_relu=False, no_relu=True)
-    #     x = self.avgpool(self.map_level_activation(feature_maps))
-    #     final_features = torch.flatten(x, 1)
-    #
-    #     if self.normalized_features:
-    #         if self.use_batch_norm:
-    #             final_features = self.batchNorm(final_features)
-    #         else:
-    #             final_features = self.normalize_features(final_features, self.mean, self.std)
-    #     return final_features
-
-    # def classify_map(self, feature_maps):
-    #     # return self.layer4[-1](feature_maps, fake_relu=False, no_relu=True)
-    #     x = self.avgpool(self.map_level_activation(feature_maps))
-    #     final_features = torch.flatten(x, 1)
-    #
-    #     if self.normalized_features:
-    #         if self.use_batch_norm:
-    #             final_features = self.batchNorm(final_features)
-    #         else:
-    #             final_features = self.normalize_features(final_features, self.mean, self.std)
-    #
-    #     return self.linear(final_features)
-
 
     def _forward(self, x, with_feature_maps=False, with_final_features=False):
         x = self.conv1(x)

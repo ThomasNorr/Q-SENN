@@ -53,8 +53,7 @@ def main(dataset, arch,seed=None, model_type="qsenn", do_dense=True,crop = True,
     if not  os.path.exists( log_dir/f"Results_DenseModel.json"):
         metrics_dense = eval_model_on_all_qsenn_metrics(model, test_loader, train_loader)
         json_save(os.path.join(log_dir, f"Results_DenseModel.json"), metrics_dense)
-    print("N class of scheduler", OptimizationSchedule.n_calls)
-    final_model = finetune(model_type, model, train_loader, test_loader, log_dir, n_classes, seed, architecture_params[arch]["beta"], OptimizationSchedule, n_per_class, n_features) #
+    final_model = finetune(model_type, model, train_loader, test_loader, log_dir, n_classes, seed, architecture_params[arch]["beta"], OptimizationSchedule, n_per_class, n_features)
     torch.save(final_model.state_dict(), os.path.join(log_dir,f"{model_type}_{n_features}_{n_per_class}_FinetunedModel.pth"))
     metrics_finetuned = eval_model_on_all_qsenn_metrics(final_model, test_loader, train_loader)
     json_save(os.path.join(log_dir, f"Results_{model_type}_{n_features}_{n_per_class}_FinetunedModel.json"), metrics_finetuned)
@@ -78,5 +77,3 @@ if __name__ == '__main__':
     parser.add_argument('--reduced_strides', default=False, type=bool, help='Whether to use reduced strides for resnets')
     args = parser.parse_args()
     main(args.dataset, args.arch, args.seed, args.model_type, args.do_dense,args.cropGT,  args.n_features, args.n_per_class, args.img_size, args.reduced_strides)
-    # Reasonable : 954960, 672817,118720, 800606 3 in a row with no dense training. Maybe there is a bug when first dense training? # Try 259594 after
-    # Worked after fixing dataloader

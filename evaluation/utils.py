@@ -1,5 +1,4 @@
 import torch
-from torch.nn.functional import gumbel_softmax, softmax
 from tqdm import tqdm
 
 
@@ -15,18 +14,13 @@ def get_metrics_for_model(train_loader, test_loader, model, metric_evaluator):
     train_loader = torch.utils.data.DataLoader(train_loader.dataset, batch_size=100, shuffle=False) # Turn off shuffling
     print("Going in get metrics")
     linear_matrix = model.linear.weight
-    bias = model.linear.bias
     entries = torch.nonzero(linear_matrix)
     rel_features = torch.unique(entries[:, 1])
     with torch.no_grad():
-
-        if bias is None:
-            bias = torch.zeros(linear_matrix.shape[0])
         iterator = tqdm(enumerate(train_loader), total=len(train_loader))
         for batch_idx, (data, target) in iterator:
             xs1 = data.to("cuda")
-            output, feature_maps,  final_features = model(xs1,   with_feature_maps=True,
-                                                                                                              with_final_features=True,)
+            output, feature_maps,  final_features = model(xs1,   with_feature_maps=True,                                                                                                              with_final_features=True,)
             outputs_train.append(output.to("cpu"))
             features_train.append(final_features.to("cpu"))
             labels.append(target.to("cpu"))
@@ -39,26 +33,20 @@ def get_metrics_for_model(train_loader, test_loader, model, metric_evaluator):
                                                          with_final_features=True, )
             feature_maps_test.append(feature_maps[:, rel_features].to("cpu"))
             outputs_test.append(output.to("cpu"))
-            #   features_test.append(pooled[:, rel_features].to("cpu"))
             total += target.size(0)
             _, predicted = output.max(1)
             correct += predicted.eq(target.to("cuda")).sum().item()
         print("test accuracy: ", correct / total)
-
         features_train = torch.cat(features_train)
-        # feature_maps_train = torch.cat(feature_maps_train)
         outputs_train = torch.cat(outputs_train)
-        #  features_test = torch.cat(features_test)
         feature_maps_test = torch.cat(feature_maps_test)
         outputs_test = torch.cat(outputs_test)
         labels = torch.cat(labels)
         linear_matrix = linear_matrix[:, rel_features]
     print("Shape of linear matrix: ", linear_matrix.shape)
-    all_metrics_dict = metric_evaluator(features_train, feature_maps_train, outputs_train, features_test,
+    all_metrics_dict = metric_evaluator(features_train,  outputs_train,
                                              feature_maps_test,
-                                             outputs_test, linear_matrix, bias, labels)
-    # diversity, cub_overlap, overlap_mean, overlap_mirror, gt_max_class_mean,
-    #           div_smscaled
+                                             outputs_test, linear_matrix,  labels)
     result_dict = {"Accuracy": correct / total,  "NFfeatures": linear_matrix.shape[1],
                    "PerClass": torch.nonzero(linear_matrix).shape[0] / linear_matrix.shape[0],
                    }

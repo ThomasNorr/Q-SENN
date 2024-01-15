@@ -14,8 +14,11 @@ on StanfordCars using the default arguments in the paper.
 
 # Environment
 You will need the usual libaries for deep learning, e.g. pytorch, torchvision, numpy, etc.
-The code ran with python 3.10.9 and torch 1.13.
 Additionally glm-saga (https://github.com/MadryLab/glm_saga) is required, and can be installed via pip.
+A suitable environment can be created using Anaconda (https://www.anaconda.com/) and the provided environment.yml file:
+```
+conda env create -f environment.yml 
+```
 
 # Datasets
 The datasets are not included in this repository. Currently supported datasets are:

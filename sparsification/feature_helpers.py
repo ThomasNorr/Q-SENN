@@ -14,7 +14,7 @@ from tqdm import tqdm
 
 
 
-
+# From glm_saga
 def get_features_batch(batch, model,  device='cuda'):
     if not torch.cuda.is_available():
         device = "cpu"
