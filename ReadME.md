@@ -115,5 +115,5 @@ The work was done at the Leibniz University Hannover and published at AAAI 2024.
     <img width="100" height="100" src="fig/AutoML4FAS_Logo.jpeg"> 
     <img width="300" height="100" src="fig/Bund.png">
     <img width="300" height="100" src="fig/LUH.png"> 
- <img width="100" height="100" src="fig/intel.svg"> 
+ <img width="100" height="100" src="fig/intel.avif"> 
 </p>
