@@ -1,10 +1,10 @@
----
-Abstract:
->Explanations in Computer Vision are often desired, but most Deep Neural Networks can only provide saliency maps with questionable faithfulness. Self-Explaining Neural Networks (SENN) extract interpretable concepts with fidelity, diversity, and grounding to combine them linearly for decision-making. While they can explain what was recognized, initial realizations lack accuracy and general applicability. We propose the Quantized-Self-Explaining Neural Network Q-SENN. Q-SENN satisfies or exceeds the desiderata of SENN while being applicable to more complex datasets and maintaining most or all of the accuracy of an uninterpretable baseline model, out-performing previous work in all considered metrics. Q-SENN describes the relationship between every class and feature as either positive, negative or neutral instead of an arbitrary number of possible relations, enforcing more binary human-friendly features. Since every class is assigned just 5 interpretable features on average, Q-SENN shows convincing local and global interpretability. Additionally, we propose a feature alignment method, capable of aligning learned features with human language-based concepts without additional supervision. Thus, what is learned can be more easily verbalized.
-
+# Q-SENN - Quantized Self-Explaining Neural Networks
 
 This repository contains the code for the AAAI 2024 paper 
-*Q-SENN: Quantized Self-Explaining Neural Network*.
+*Q-SENN: Quantized Self-Explaining Neural Network* by Thomas
+Norrenbrock, 
+Marco Rudolph,
+and Bodo Rosenhahn.
 Additonally, the SLDD-model from *Take 5: 
 Interpretable Image Classification with a Handful of Features* (NeurIPS 
 Workshop) from the same authors is included.
@@ -13,6 +13,13 @@ Workshop) from the same authors is included.
 <p align="center">
     <img width="400" height="400" src="fig/birds.png"> 
 </p>
+
+---
+Abstract:
+>Explanations in Computer Vision are often desired, but most Deep Neural Networks can only provide saliency maps with questionable faithfulness. Self-Explaining Neural Networks (SENN) extract interpretable concepts with fidelity, diversity, and grounding to combine them linearly for decision-making. While they can explain what was recognized, initial realizations lack accuracy and general applicability. We propose the Quantized-Self-Explaining Neural Network Q-SENN. Q-SENN satisfies or exceeds the desiderata of SENN while being applicable to more complex datasets and maintaining most or all of the accuracy of an uninterpretable baseline model, out-performing previous work in all considered metrics. Q-SENN describes the relationship between every class and feature as either positive, negative or neutral instead of an arbitrary number of possible relations, enforcing more binary human-friendly features. Since every class is assigned just 5 interpretable features on average, Q-SENN shows convincing local and global interpretability. Additionally, we propose a feature alignment method, capable of aligning learned features with human language-based concepts without additional supervision. Thus, what is learned can be more easily verbalized.
+
+
+
 
 ---
 
