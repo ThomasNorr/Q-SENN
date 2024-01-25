@@ -27,7 +27,7 @@ Abstract:
 You will need the usual libaries for deep learning, e.g. pytorch, 
 torchvision, numpy, etc. Additionally, we use 
 [GLM-Saga](https://github.com/MadryLab/glm_saga) that can be installed via pip.
-I case you are lazy (or like to spend your time otherwise), a suitable 
+In case you are lazy (or like to spend your time otherwise), a suitable 
 environment can be created using [Anaconda](https://www.anaconda.com/) and the 
 provided environment.yml file:
 ```shell
