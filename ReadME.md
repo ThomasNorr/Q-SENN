@@ -99,7 +99,15 @@ scratch on ImageNet. The pretrained models are used directly.
 This can be replicated with the argument --do-dense False.
 
 ```bibtex
-Will come soon after AAAI24 in February!
+@inproceedings{norrenbrock2024q,
+  title={Q-senn: Quantized self-explaining neural networks},
+  author={Norrenbrock, Thomas and Rudolph, Marco and Rosenhahn, Bodo},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={19},
+  pages={21482--21491},
+  year={2024}
+}
 ```
 
 ## Acknowledgement
