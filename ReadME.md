@@ -1,12 +1,12 @@
 # Q-SENN - Quantized Self-Explaining Neural Networks
 
 This repository contains the code for the AAAI 2024 paper 
-*Q-SENN: Quantized Self-Explaining Neural Network* by Thomas
-Norrenbrock, 
+[*Q-SENN: Quantized Self-Explaining Neural Network*](https://ojs.aaai.org/index.php/AAAI/article/view/3014]) by Thomas
+Norrenbrock , 
 Marco Rudolph,
 and Bodo Rosenhahn.
-Additonally, the SLDD-model from *Take 5: 
-Interpretable Image Classification with a Handful of Features* (NeurIPS 
+Additonally, the SLDD-model from [*Take 5: 
+Interpretable Image Classification with a Handful of Features*](https://arxiv.org/pdf/2303.13166) (NeurIPS 
 Workshop) from the same authors is included.
 
 
@@ -109,6 +109,8 @@ This can be replicated with the argument --do-dense False.
   year={2024}
 }
 ```
+## Pretrained Model
+One pretrained model for Q-SENN on CUB can be obtained via this link: https://drive.google.com/file/d/1TsJd5B3pkCT38FLrCcIpEAjxFcpyULAR/view?usp=sharing
 
 ## Acknowledgement
 This work was supported by the Federal Ministry of Education and Research (BMBF), Germany under the AI service center KISSKI (grant no. 01IS22093C) and the Deutsche Forschungsgemeinschaft (DFG) under Germany’s Excellence Strategy within the Cluster of Excellence PhoenixD (EXC 2122).
