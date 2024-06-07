@@ -1,7 +1,7 @@
 # Q-SENN - Quantized Self-Explaining Neural Networks
 
 This repository contains the code for the AAAI 2024 paper 
-[*Q-SENN: Quantized Self-Explaining Neural Network*](https://ojs.aaai.org/index.php/AAAI/article/view/3014]) by Thomas
+[*Q-SENN: Quantized Self-Explaining Neural Network*](https://ojs.aaai.org/index.php/AAAI/article/view/30145]) by Thomas
 Norrenbrock , 
 Marco Rudolph,
 and Bodo Rosenhahn.
