@@ -97,7 +97,9 @@ python main.py --dataset StanfordCars
 All experiments on ImageNet in the paper skipped the dense training from 
 scratch on ImageNet. The pretrained models are used directly.
 This can be replicated with the argument --do-dense False.
-
+## Citations
+Please cite this work as:
+Q-SENN
 ```bibtex
 @inproceedings{norrenbrock2024q,
   title={Q-senn: Quantized self-explaining neural networks},
@@ -107,6 +109,15 @@ This can be replicated with the argument --do-dense False.
   number={19},
   pages={21482--21491},
   year={2024}
+}
+```
+SLDD-Model
+```bibtex
+@inproceedings{norrenbrocktake,
+  title={Take 5: Interpretable Image Classification with a Handful of Features},
+  author={Norrenbrock, Thomas and Rudolph, Marco and Rosenhahn, Bodo},
+  year={2022},
+  booktitle={Progress and Challenges in Building Trustworthy Embodied AI}
 }
 ```
 ## Pretrained Model
