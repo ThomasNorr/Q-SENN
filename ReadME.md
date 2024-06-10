@@ -98,7 +98,7 @@ All experiments on ImageNet in the paper skipped the dense training from
 scratch on ImageNet. The pretrained models are used directly.
 This can be replicated with the argument --do-dense False.
 ## Citations
-Please cite this work as:
+Please cite this work as:\
 Q-SENN
 ```bibtex
 @inproceedings{norrenbrock2024q,
