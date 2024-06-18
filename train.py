@@ -47,12 +47,13 @@ def test(model, test_loader, epoch):
     model = model.to(device)
     VariableLossPrinter = VariableLossLogPrinter()
     iterator = tqdm(enumerate(test_loader), total=len(test_loader))
-    for batch_idx, (data, target) in iterator:
-        on_device = data.to(device)
-        target_on_device = target.to(device)
-        output, feature_maps = model(on_device, with_feature_maps=True)
-        loss = torch.nn.functional.cross_entropy(output, target_on_device)
-        acc = get_acc(output, target_on_device)
-        VariableLossPrinter.log_loss("Test Acc", acc, on_device.size(0))
-        VariableLossPrinter.log_loss("CE-Loss", loss.item(), on_device.size(0))
-        iterator.set_description(f"Test Epoch:{epoch} Metrics: {VariableLossPrinter.get_loss_string()}")
+    with torch.no_grad():
+        for batch_idx, (data, target) in iterator:
+            on_device = data.to(device)
+            target_on_device = target.to(device)
+            output, feature_maps = model(on_device, with_feature_maps=True)
+            loss = torch.nn.functional.cross_entropy(output, target_on_device)
+            acc = get_acc(output, target_on_device)
+            VariableLossPrinter.log_loss("Test Acc", acc, on_device.size(0))
+            VariableLossPrinter.log_loss("CE-Loss", loss.item(), on_device.size(0))
+            iterator.set_description(f"Test Epoch:{epoch} Metrics: {VariableLossPrinter.get_loss_string()}")
