@@ -1,12 +1,12 @@
 # Q-SENN - Quantized Self-Explaining Neural Networks
 
 This repository contains the code for the AAAI 2024 paper 
-*Q-SENN: Quantized Self-Explaining Neural Network* by Thomas
-Norrenbrock, 
+[*Q-SENN: Quantized Self-Explaining Neural Network*](https://ojs.aaai.org/index.php/AAAI/article/view/30145) by Thomas
+Norrenbrock , 
 Marco Rudolph,
 and Bodo Rosenhahn.
-Additonally, the SLDD-model from *Take 5: 
-Interpretable Image Classification with a Handful of Features* (NeurIPS 
+Additonally, the SLDD-model from [*Take 5: 
+Interpretable Image Classification with a Handful of Features*](https://arxiv.org/pdf/2303.13166) (NeurIPS 
 Workshop) from the same authors is included.
 
 
@@ -27,7 +27,7 @@ Abstract:
 You will need the usual libaries for deep learning, e.g. pytorch, 
 torchvision, numpy, etc. Additionally, we use 
 [GLM-Saga](https://github.com/MadryLab/glm_saga) that can be installed via pip.
-I case you are lazy (or like to spend your time otherwise), a suitable 
+In case you are lazy (or like to spend your time otherwise), a suitable 
 environment can be created using [Anaconda](https://www.anaconda.com/) and the 
 provided environment.yml file:
 ```shell
@@ -97,10 +97,31 @@ python main.py --dataset StanfordCars
 All experiments on ImageNet in the paper skipped the dense training from 
 scratch on ImageNet. The pretrained models are used directly.
 This can be replicated with the argument --do-dense False.
-
+## Citations
+Please cite this work as:\
+Q-SENN
 ```bibtex
-Will come soon after AAAI24 in February!
+@inproceedings{norrenbrock2024q,
+  title={Q-senn: Quantized self-explaining neural networks},
+  author={Norrenbrock, Thomas and Rudolph, Marco and Rosenhahn, Bodo},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={19},
+  pages={21482--21491},
+  year={2024}
+}
 ```
+SLDD-Model
+```bibtex
+@inproceedings{norrenbrocktake,
+  title={Take 5: Interpretable Image Classification with a Handful of Features},
+  author={Norrenbrock, Thomas and Rudolph, Marco and Rosenhahn, Bodo},
+  year={2022},
+  booktitle={Progress and Challenges in Building Trustworthy Embodied AI}
+}
+```
+## Pretrained Model
+One pretrained model for Q-SENN on CUB can be obtained via this link: https://drive.google.com/file/d/1TsJd5B3pkCT38FLrCcIpEAjxFcpyULAR/view?usp=sharing
 
 ## Acknowledgement
 This work was supported by the Federal Ministry of Education and Research (BMBF), Germany under the AI service center KISSKI (grant no. 01IS22093C) and the Deutsche Forschungsgemeinschaft (DFG) under Germany’s Excellence Strategy within the Cluster of Excellence PhoenixD (EXC 2122).
@@ -114,6 +135,5 @@ The work was done at the Leibniz University Hannover and published at AAAI 2024.
 <p align="center">
     <img width="100" height="100" src="fig/AutoML4FAS_Logo.jpeg"> 
     <img width="300" height="100" src="fig/Bund.png">
-    <img width="300" height="100" src="fig/LUH.png"> 
- <img width="100" height="100" src="fig/intel.avif"> 
+    <img width="300" height="100" src="fig/LUH.png">
 </p>
