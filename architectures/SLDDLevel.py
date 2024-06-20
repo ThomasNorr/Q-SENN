@@ -4,7 +4,7 @@ import torch.nn
 class SLDDLevel(torch.nn.Module):
     def __init__(self, selection, weight_at_selection,mean, std, bias=None):
         super().__init__()
-        self.selection = torch.nn.Parameter(selection, requires_grad=False)
+        self.register_buffer('selection', torch.tensor(selection, dtype=torch.long))
         num_classes,        n_features = weight_at_selection.shape
         selected_mean = mean
         selected_std = std
