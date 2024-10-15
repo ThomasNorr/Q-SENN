@@ -121,8 +121,7 @@ SLDD-Model
 }
 ```
 ## Pretrained Model
-One pretrained model for Q-SENN on CUB can be obtained via this link: https://drive.google.com/file/d/1TsJd5B3pkCT38FLrCcIpEAjxFcpyULAR/view?usp=sharing
-
+One pretrained model for Q-SENN on CUB can be obtained via this link: https://drive.google.com/drive/folders/1agWqKhcWOVWueV4Fzaowr80lQroCJFYn?usp=drive_link
 ## Acknowledgement
 This work was supported by the Federal Ministry of Education and Research (BMBF), Germany under the AI service center KISSKI (grant no. 01IS22093C) and the Deutsche Forschungsgemeinschaft (DFG) under Germany’s Excellence Strategy within the Cluster of Excellence PhoenixD (EXC 2122).
 This work was partially supported by Intel Corporation and by the German Federal Ministry
