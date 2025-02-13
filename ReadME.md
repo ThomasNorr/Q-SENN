@@ -9,6 +9,8 @@ Additonally, the SLDD-model from [*Take 5:
 Interpretable Image Classification with a Handful of Features*](https://arxiv.org/pdf/2303.13166) (NeurIPS 
 Workshop) from the same authors is included.
 
+Please also check out [QPM: Discrete Optimization for Globally Interpretable Image Classification](https://github.com/ThomasNorr/QPM) (ICLR 2025), if you like this line of work.
+
 
 <p align="center">
     <img width="400" height="400" src="fig/birds.png"> 
