@@ -9,7 +9,7 @@ Additonally, the SLDD-model from [*Take 5:
 Interpretable Image Classification with a Handful of Features*](https://arxiv.org/pdf/2303.13166) (NeurIPS 
 Workshop) from the same authors is included.
 
-Please also check out [QPM: Discrete Optimization for Globally Interpretable Image Classification](https://github.com/ThomasNorr/QPM) (ICLR 2025), if you like this line of work.
+Please also check out [CHiQPM: Calibrated Hierarchical Interpretable Image Classification](https://github.com/ThomasNorr/chiqpm) (NeurIPS 2025) and [QPM: Discrete Optimization for Globally Interpretable Image Classification](https://github.com/ThomasNorr/QPM) (ICLR 2025), if you like this line of work.
 
 
 <p align="center">
